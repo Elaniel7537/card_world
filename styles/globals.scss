@@ -1,0 +1,54 @@
+@import 'antd/dist/antd.css';
+@import "vars.scss";
+@import "modules/card.module.scss";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Libre Franklin', sans-serif;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 0px !important;
+    color: var(--whiteColor) !important;
+  }
+
+  .logo {
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: var(--logoBackground);
+  }
+}
+
+.site-layout {
+  margin-top: 50px;
+  padding: 0px 50px;
+  min-height: calc(100vh - 200px);
+
+  .site-layout-background {
+    background: var(--whiteColor);
+    padding: 24px;
+    min-height: calc(100vh - 200px)
+  }
+}
+
+footer {
+  text-align: center;
+}
