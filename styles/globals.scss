@@ -1,7 +1,8 @@
 @import 'antd/dist/antd.css';
+@import "custom.scss";
 @import "vars.scss";
 @import "utils.scss";
-@import "modules/card.module.scss";
+@import "modules/home.scss";
 
 html,
 body {
@@ -39,6 +40,16 @@ header {
     background: var(--whiteColor);
     padding: 24px;
     min-height: calc(100vh - 200px)
+  }
+}
+
+.flexbox {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  .card-item {
+    margin: 0.5rem;
   }
 }
 

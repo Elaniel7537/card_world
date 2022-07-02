@@ -1,13 +1,15 @@
 import type { NextPage } from "next";
 import fetch from "isomorphic-unfetch";
-import { Col, Row, Tabs } from "antd";
+import { Col, Divider, Row, Typography } from "antd";
 //components
-import CardComponent from "@components/organism/cardComponent";
+import FormComponent from "@components/organism/formComponent";
+import TabsComponent from "@components/organism/tabsComponent";
+import ModalFormComponent from "@components/organism/modalFormComponent";
 //utils
 import { setListCategory } from "@utils/functions";
-import { CategoryEnum } from "@utils/enum";
+import { ServePropsInterface } from "@components/organism/ts/interfaces";
 
-const { TabPane } = Tabs;
+const { Title } = Typography;
 
 //request serve
 export const getServerSideProps = async () => {
@@ -23,42 +25,23 @@ export const getServerSideProps = async () => {
   };
 };
 
-const Home: NextPage = ({ listCategory }: any) => {
+const Home: NextPage<ServePropsInterface> = ({ listCategory }) => {
   return (
-    <Tabs defaultActiveKey="1" centered>
-      {[CategoryEnum.HQ, CategoryEnum.CHARACTER, CategoryEnum.TECHNOLOGY]?.map(
-        (item, key) => {
-          return (
-            <TabPane
-              tab={item === CategoryEnum.HQ ? "Haod Quarters" : item}
-              key={key + 1}
-            >
-              <Row gutter={[16, 16]}>
-                {listCategory?.[item].map((resp: any, index: any) => {
-                  return (
-                    <Col
-                      xs={24}
-                      sm={
-                        item === CategoryEnum.HQ ||
-                        item === CategoryEnum.TECHNOLOGY
-                          ? 12
-                          : 8
-                      }
-                      md={item === CategoryEnum.CHARACTER ? 6 : 12}
-                      lg={item === CategoryEnum.CHARACTER ? 4 : 6}
-                      xxl={item === CategoryEnum.CHARACTER ? 3 : 4}
-                      key={index}
-                    >
-                      <CardComponent detailsCard={resp} />
-                    </Col>
-                  );
-                })}
-              </Row>
-            </TabPane>
-          );
-        }
-      )}
-    </Tabs>
+    <Row gutter={[16, 16]} className="home-page">
+      <Col span={24} className="display-mobile">
+        <ModalFormComponent />
+        <Divider />
+      </Col>
+      <Col xs={24} lg={5} xl={4} className="display-pc">
+        <Title level={4}>Filtros</Title>
+        <Divider />
+        <FormComponent />
+      </Col>
+
+      <Col xs={24} lg={19} xl={20}>
+        <TabsComponent listCategory={listCategory} />
+      </Col>
+    </Row>
   );
 };
 

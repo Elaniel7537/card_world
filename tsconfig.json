@@ -16,8 +16,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
       "@layout/*": ["src/layout/*"],
+      "@components/*": ["src/components/*"],
+      "@atoms/*": ["src/components/atoms/*"],
+      "@organism/*": ["src/components/organism/*"],
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["styles/*"]
     }
