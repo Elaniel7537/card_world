@@ -1,0 +1,16 @@
+/* mobile firts */
+@media only screen and (min-width : 1024px) {
+  .site-layout {
+    padding: 0px 50px !important;
+  }
+
+  .home-page {
+    .display-pc {
+      display: inline !important;
+    }
+
+    .display-mobile {
+      display: none !important;
+    }
+  }
+}
