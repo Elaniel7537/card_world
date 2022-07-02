@@ -19,3 +19,13 @@
 .ant-modal-footer {
     display: none;
 }
+
+.label-name .ant-form-item-control {
+    flex: 0 0 100% !important;
+}
+
+.ant-form .ant-form-item .ant-form-item-label,
+.ant-form .ant-form-item .ant-form-item-control {
+    flex: 0 0 50%;
+
+}

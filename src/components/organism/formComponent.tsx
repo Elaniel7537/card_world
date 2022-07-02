@@ -8,17 +8,12 @@ const FormComponent: React.FC = () => {
 
   return (
     <Form
-      labelCol={{ span: 12 }}
-      wrapperCol={{ span: 12 }}
       layout="horizontal"
       onFinish={onFinish}
+      labelCol={{ span: 12 }}
+      wrapperCol={{ span: 12 }}
     >
-      <Form.Item
-        name="name"
-        label="Nombre"
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-      >
+      <Form.Item name="name" wrapperCol={{ span: 24 }} className="label-name">
         <Input placeholder="nombre tarjeta" />
       </Form.Item>
 

@@ -10,6 +10,7 @@ module.exports = {
   },
   nextConfig,
   images: {
+    unoptimized: true,
     domains: ["deviants-factions.mo.cloudinary.net"],
   },
 };

@@ -11,7 +11,7 @@ const ImageComponent: React.FC<ImageInterface> = ({ id, CardType, Rarity }) => {
       src={srcImage({ id, CardType, Rarity })}
       alt={id}
       layout="fill"
-      priority
+      loading="eager"
     />
   );
 };
