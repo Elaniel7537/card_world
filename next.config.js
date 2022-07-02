@@ -9,4 +9,7 @@ module.exports = {
     includePaths: [path.join(__dirname, "styles")],
   },
   nextConfig,
+  images: {
+    domains: ["deviants-factions.mo.cloudinary.net"],
+  },
 };

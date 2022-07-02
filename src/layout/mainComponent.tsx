@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Layout, Typography } from "antd";
 
 const { Header, Footer, Content } = Layout;
@@ -9,7 +8,6 @@ const MainLayout = ({ children }: any) => {
   return (
     <Layout>
       <Header>
-        <div className="logo" />
         <Title level={2}>Cards Worlds</Title>
       </Header>
       <Content className="site-layout">

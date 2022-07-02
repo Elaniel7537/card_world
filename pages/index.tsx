@@ -1,26 +1,51 @@
-import { Col, Row, Tabs } from "antd";
 import type { NextPage } from "next";
+import fetch from "isomorphic-unfetch";
+import { Col, Row, Tabs } from "antd";
 //components
 import CardComponent from "@components/organism/cardComponent";
+//utils
+import { setListCategory } from "@utils/functions";
+import { CategoryEnum } from "@utils/enum";
 
 const { TabPane } = Tabs;
 
-const Home: NextPage = () => {
+//request serve
+export const getServerSideProps = async () => {
+  const response = await fetch("https://pastebin.com/raw/sv7YB2Wq");
+  const listCards = await response.json();
+
+  const listCategory = await setListCategory(listCards);
+
+  return {
+    props: {
+      listCategory,
+    },
+  };
+};
+
+const Home: NextPage = ({ listCategory }: any) => {
   return (
     <Tabs defaultActiveKey="1" centered>
-      <TabPane tab="Haod Quarters" key="1">
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={3} lg={4} xl={6}>
-            <CardComponent />
-          </Col>
-        </Row>
-      </TabPane>
-      <TabPane tab="Character" key="2">
-        Character
-      </TabPane>
-      <TabPane tab="Technology" key="3">
-        Technology
-      </TabPane>
+      {[CategoryEnum.HQ, CategoryEnum.CHARACTER, CategoryEnum.TECHNOLOGY]?.map(
+        (item, key) => {
+          return (
+            <TabPane
+              tab={item === CategoryEnum.HQ ? "Haod Quarters" : item}
+              key={key + 1}
+            >
+              <Row gutter={[16, 16]}>
+                {listCategory?.[item].map((resp: any, index: any) => {
+                  return (
+                    <Col xs={24} md={3} lg={6} xl={8} key={index}>
+                      <CardComponent detailsCard={resp} />
+                    </Col>
+                  );
+                })}
+              </Row>
+            </TabPane>
+          );
+        }
+      )}
     </Tabs>
   );
 };
