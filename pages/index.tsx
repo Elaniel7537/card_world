@@ -36,7 +36,19 @@ const Home: NextPage = ({ listCategory }: any) => {
               <Row gutter={[16, 16]}>
                 {listCategory?.[item].map((resp: any, index: any) => {
                   return (
-                    <Col xs={24} md={3} lg={6} xl={8} key={index}>
+                    <Col
+                      xs={24}
+                      sm={
+                        item === CategoryEnum.HQ ||
+                        item === CategoryEnum.TECHNOLOGY
+                          ? 12
+                          : 8
+                      }
+                      md={item === CategoryEnum.CHARACTER ? 6 : 12}
+                      lg={item === CategoryEnum.CHARACTER ? 4 : 6}
+                      xxl={item === CategoryEnum.CHARACTER ? 3 : 4}
+                      key={index}
+                    >
                       <CardComponent detailsCard={resp} />
                     </Col>
                   );
