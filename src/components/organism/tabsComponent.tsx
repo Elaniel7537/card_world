@@ -1,14 +1,17 @@
 import React from "react";
-import { Row, Tabs } from "antd";
+import { Empty, Row, Tabs } from "antd";
 //components
 import CardComponent from "@components/organism/cardComponent";
 //utils
 import { CategoryEnum } from "@utils/enum";
-import { ServePropsInterface } from "./ts/interfaces";
+//store & slice
+import { useAppSelector } from "@app/hooks";
 
 const { TabPane } = Tabs;
 
-const TabsComponent: React.FC<ServePropsInterface> = ({ listCategory }) => {
+const TabsComponent: React.FC<any> = () => {
+  const { listCategory } = useAppSelector((state) => state.cardlist);
+
   return (
     <Tabs defaultActiveKey="1" centered>
       {[CategoryEnum.HQ, CategoryEnum.CHARACTER, CategoryEnum.TECHNOLOGY]?.map(
@@ -28,6 +31,9 @@ const TabsComponent: React.FC<ServePropsInterface> = ({ listCategory }) => {
                     />
                   );
                 })}
+                {!listCategory?.[item]?.length && (
+                  <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                )}
               </Row>
             </TabPane>
           );

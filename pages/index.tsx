@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 import { Col, Divider, Row, Typography } from "antd";
 //components
@@ -8,6 +9,9 @@ import ModalFormComponent from "@components/organism/modalFormComponent";
 //utils
 import { setListCategory } from "@utils/functions";
 import { ServePropsInterface } from "@components/organism/ts/interfaces";
+//store & slice
+import { useAppDispatch } from "@app/hooks";
+import { setListCards } from "@features/cardSlice";
 
 const { Title } = Typography;
 
@@ -26,6 +30,13 @@ export const getServerSideProps = async () => {
 };
 
 const Home: NextPage<ServePropsInterface> = ({ listCategory }) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setListCards(listCategory));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Row gutter={[16, 16]} className="home-page">
       <Col span={24} className="display-mobile">
@@ -37,11 +48,11 @@ const Home: NextPage<ServePropsInterface> = ({ listCategory }) => {
           <Title level={4}>Filtros</Title>
         </div>
         <Divider />
-        <FormComponent />
+        <FormComponent inModal={false} />
       </Col>
 
       <Col xs={24} lg={19} xl={20}>
-        <TabsComponent listCategory={listCategory} />
+        <TabsComponent />
       </Col>
     </Row>
   );

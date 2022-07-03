@@ -19,7 +19,7 @@ const CardComponent: React.FC<CardPropsInterface> = ({
     detailsCard;
 
   return (
-    <div className="animate__animated animate__flipInX">
+    <div className="animate__animated animate__rubberBand">
       <Card
         key={id}
         className="card-item"
