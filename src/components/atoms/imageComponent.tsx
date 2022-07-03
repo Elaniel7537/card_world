@@ -7,12 +7,14 @@ import { ImageInterface } from "@atoms/ts/interfaces";
 const ImageComponent: React.FC<ImageInterface> = ({ id, CardType, Rarity }) => {
   return (
     <Image
-      key={id}
+      blurDataURL={srcImage({ id, CardType, Rarity })}
       src={srcImage({ id, CardType, Rarity })}
-      alt={id}
-      layout="fill"
-      priority
+      placeholder="blur"
       loading="eager"
+      layout="fill"
+      alt={id}
+      key={id}
+      priority
     />
   );
 };
