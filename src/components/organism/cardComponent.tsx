@@ -34,7 +34,7 @@ const CardComponent: React.FC<CardPropsInterface> = ({
         }}
         cover={<ImageComponent id={id} CardType={CardType} Rarity={Rarity} />}
         actions={[
-          <Button type="text" onClick={() => setView(true)}>
+          <Button key={id} type="text" onClick={() => setView(true)}>
             <FullscreenOutlined />
           </Button>,
         ]}

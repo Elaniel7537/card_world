@@ -14,6 +14,7 @@ const ScreenImgComponent: React.FC<any> = ({
 
   return (
     <Image
+      alt="id"
       width={200}
       style={{ display: "none" }}
       src={url}
