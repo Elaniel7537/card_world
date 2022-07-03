@@ -8,7 +8,9 @@ const MainLayout = ({ children }: any) => {
   return (
     <Layout>
       <Header>
-        <Title level={2}>Cards Worlds</Title>
+        <div className="animate__animated animate__rubberBand">
+          <Title level={2}>Cards Worlds</Title>
+        </div>
       </Header>
       <Content className="site-layout">
         <div className="site-layout-background">{children}</div>

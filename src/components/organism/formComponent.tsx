@@ -28,6 +28,7 @@ const FormComponent: React.FC = () => {
       <Divider />
 
       <Form.Item
+        className="label-name"
         wrapperCol={{
           xs: { span: 24, offset: 0 },
           sm: { span: 16, offset: 8 },

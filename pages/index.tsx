@@ -33,7 +33,9 @@ const Home: NextPage<ServePropsInterface> = ({ listCategory }) => {
         <Divider />
       </Col>
       <Col xs={24} lg={5} xl={4} className="display-pc">
-        <Title level={4}>Filtros</Title>
+        <div className=" animate__animated animate__rubberBand">
+          <Title level={4}>Filtros</Title>
+        </div>
         <Divider />
         <FormComponent />
       </Col>
