@@ -4,6 +4,9 @@ import Head from "next/head";
 import MainLayout from "@layout/mainComponent";
 // css
 import "@styles/globals.scss";
+//store
+import { store } from "@app/store";
+import { Provider } from "react-redux";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -11,9 +14,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Game Cards Worlds</title>
       </Head>
-      <MainLayout>
-        <Component {...pageProps} />
-      </MainLayout>
+      <Provider store={store}>
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
+      </Provider>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 //components
-import FormComponent from "./formComponent";
+import FormComponent from "@organism/formComponent";
 
 const ModalFormComponent: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -28,7 +28,13 @@ const ModalFormComponent: React.FC = () => {
         visible={isModalVisible}
         onCancel={handleCancel}
       >
-        <FormComponent />
+        <FormComponent
+          inModal={true}
+          visible={isModalVisible}
+          setIsModalVisible={(e: any) => {
+            setIsModalVisible(e);
+          }}
+        />
       </Modal>
     </>
   );

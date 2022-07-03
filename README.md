@@ -5,6 +5,7 @@ El aplicativo esta desarrollado en Next.js.
 ## Implementado:
 
 - React.
+- Redux Toolkit.
 - Typescript.
 - Atomic Desing.
 - Ant Desing. https://ant.design/.
