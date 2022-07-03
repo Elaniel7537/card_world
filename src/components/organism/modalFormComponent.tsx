@@ -20,7 +20,11 @@ const ModalFormComponent: React.FC = () => {
         Filtros
       </Button>
       <Modal
-        title="Filtros Disponibles"
+        title={
+          <div className="animate__animated animate__headShake">
+            Filtros Disponibles
+          </div>
+        }
         visible={isModalVisible}
         onCancel={handleCancel}
       >

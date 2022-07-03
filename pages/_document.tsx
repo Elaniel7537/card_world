@@ -16,6 +16,10 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600&display=swap"
           rel="stylesheet"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
       </Head>
       <body>
         <Main />
