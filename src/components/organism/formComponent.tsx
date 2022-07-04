@@ -21,17 +21,44 @@ const FormComponent: React.FC<any> = ({
   const [, forceUpdate] = useState({});
 
   const onFinish = (values: any) => {
+    const filters = {
+      Name: values.name,
+      Faction: [
+        values.awaken && "Awaken",
+        values.entropy && "Entropy",
+        values.inhuman && "Inhuman",
+        values.owner && "Owner",
+        values.undeviant && "Undeviant",
+      ],
+      Rarity: [
+        values.legendary && "Legendary",
+        values.rare && "Rare",
+        values.uncommon && "Uncommon",
+        values.common && "Common",
+      ],
+    };
+
     const getFiltersCards: DetailsCategoryInterface = {
       HQ: listCategory?.[CategoryEnum.HQ]?.filter(
-        (item: any) => item.Name.toLowerCase() === values.name.toLowerCase()
+        (item: any) =>
+          item.Name === values.name ||
+          filters.Rarity.includes(item.Rarity) ||
+          filters.Faction.includes(item.Faction)
       ),
       Character: listCategory?.[CategoryEnum.CHARACTER]?.filter(
-        (item: any) => item.Name.toLowerCase() === values.name.toLowerCase()
+        (item: any) =>
+          item.Name === values.name ||
+          filters.Rarity.includes(item.Rarity) ||
+          filters.Faction.includes(item.Faction)
       ),
       Technology: listCategory?.[CategoryEnum.TECHNOLOGY]?.filter(
-        (item: any) => item.Name.toLowerCase() === values.name.toLowerCase()
+        (item: any) =>
+          item.Name === values.name ||
+          filters.Rarity.includes(item.Rarity) ||
+          filters.Faction.includes(item.Faction)
       ),
     };
+
     if (inModal) setIsModalVisible(!visible);
     dispatch(setCardsFilters(getFiltersCards));
   };
@@ -53,23 +80,103 @@ const FormComponent: React.FC<any> = ({
       labelCol={{ span: 12 }}
       wrapperCol={{ span: 12 }}
       form={form}
+      size="small"
     >
       <Form.Item
         name="name"
         wrapperCol={{ span: 24 }}
         className="label-name"
-        rules={[{ required: true, message: "Es necesario un Nombre!" }]}
+        // rules={[{ required: true, message: "Es necesario un Nombre!" }]}
+        shouldUpdate
       >
-        <Input placeholder="nombre tarjeta" />
+        <Input
+          placeholder="nombre tarjeta"
+          disabled={form.getFieldValue("name")}
+        />
       </Form.Item>
 
-      {/* en espera de los otros parametros para consultar */}
-      <Form.Item name="cat" label="Param 1" valuePropName="checked">
-        <Switch disabled />
+      <Divider orientation="left" plain>
+        FACTIONS
+      </Divider>
+
+      <Form.Item
+        name="awaken"
+        label="Awaken"
+        valuePropName="checked"
+        shouldUpdate
+      >
+        <Switch disabled={form.getFieldValue("awaken")} />
       </Form.Item>
 
-      <Form.Item name="get" label="Param 2" valuePropName="checked">
-        <Switch disabled />
+      <Form.Item
+        name="entropy"
+        label="Entropy"
+        valuePropName="checked"
+        shouldUpdate
+      >
+        <Switch disabled={form.getFieldValue("entropy")} />
+      </Form.Item>
+
+      <Form.Item
+        name="inhuman"
+        label="Inhuman"
+        valuePropName="checked"
+        shouldUpdate
+      >
+        <Switch disabled={form.getFieldValue("inhuman")} />
+      </Form.Item>
+
+      <Form.Item
+        name="owner"
+        label="Owner"
+        valuePropName="checked"
+        shouldUpdate
+      >
+        <Switch disabled={form.getFieldValue("owner")} />
+      </Form.Item>
+
+      <Form.Item
+        name="undeviant"
+        label="Undeviant"
+        valuePropName="checked"
+        shouldUpdate
+      >
+        <Switch disabled={form.getFieldValue("undeviant")} />
+      </Form.Item>
+
+      <Divider orientation="left" plain>
+        RARITY
+      </Divider>
+
+      <Form.Item
+        name="legendary"
+        label="Legendary"
+        valuePropName="checked"
+        shouldUpdate
+      >
+        <Switch disabled={form.getFieldValue("legendary")} />
+      </Form.Item>
+
+      <Form.Item name="rare" label="Rare" valuePropName="checked" shouldUpdate>
+        <Switch disabled={form.getFieldValue("rare")} />
+      </Form.Item>
+
+      <Form.Item
+        name="uncommon"
+        label="Uncommon"
+        valuePropName="checked"
+        shouldUpdate
+      >
+        <Switch disabled={form.getFieldValue("uncommon")} />
+      </Form.Item>
+
+      <Form.Item
+        name="common"
+        label="Common"
+        valuePropName="checked"
+        shouldUpdate
+      >
+        <Switch disabled={form.getFieldValue("common")} />
       </Form.Item>
 
       <Divider />
